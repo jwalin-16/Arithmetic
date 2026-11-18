@@ -1,0 +1,14 @@
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: arithmetic-job
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: arithmetic-container
+        image: arithmetic-app:latest
+        imagePullPolicy: IfNotPresent

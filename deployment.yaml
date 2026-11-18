@@ -1,0 +1,27 @@
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: arithmetic-deployment
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: arithmetic
+
+  template:
+    metadata:
+      labels:
+        app: arithmetic
+
+    spec:
+      containers:
+        - name: arithmetic-container
+          image: arithmetic-app:latest
+          imagePullPolicy: Never
+          command: ["python", "-c"]
+          args:
+            - "print('Addition: 30'); print('Subtraction: 10'); print('Multiplication: 200'); print('Division: 2')"
